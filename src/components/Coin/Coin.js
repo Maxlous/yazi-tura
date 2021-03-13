@@ -9,10 +9,12 @@ const Coin = (props) => {
       <div className={`Coin ${props.flipping ? "Coin-rotate" : ""}`}>
         <img
           src={CoinTura}
+          alt="Demir paranın tura kısmı"
           className={props.side === "yazi" ? "Coin-back" : "Coin-front"}
         />
         <img
           src={CoinYazi}
+          alt="Demir paranın yazı kısmı"
           className={props.side === "yazi" ? "Coin-front" : "Coin-back"}
         />
       </div>

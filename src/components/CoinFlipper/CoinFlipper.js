@@ -10,13 +10,28 @@ class CoinFlipper extends Component {
     this.state = {
       side: "tura",
       flipping: false,
+      total: 0,
+      yaziSum:0,
+      turaSum:0,
     };
   }
+  
   handleClick = () => {
-    // "At!" butonuna tıkladığımızda paranın dönmesini istiyoruz, bu yüzden "flipping" durumunu "true" yapıyoruz.
-    this.setState({ flipping: true });
+    // "At!" butonuna tıkladığımızda paranın dönmesini istiyoruz, bu yüzden "flipping" durumunu "true" yapıyoruz.    
+    this.setState({flipping:true})
+    //random sayı alıp ona göre state'leri güncelledik.
+    const random = () => Math.floor(Math.random() *2);
+    if(random() === 0){
+      this.setState((state) => {
+        return {total: state.total + 1, side: "tura", turaSum: state.turaSum + 1};
+    });
+    } else{
+      this.setState((state) => {
+        return {total: state.total + 1,side: "yazi", yaziSum: state.yaziSum + 1};
+      });
+    }
     // 1 saniye kadar dönmesi yeterli, bu yüzden 1 saniye sonra "flipping" durmunu tekrar "false" yapıyoruz.
-    setTimeout(() => this.setState({ flipping: false }), 1000);
+    setTimeout(() => this.setState({ flipping: false }), 1000)
   };
 
   render() {
@@ -27,11 +42,11 @@ class CoinFlipper extends Component {
         <button onClick={this.handleClick}>At!</button>
         <p>
           Toplam
-          <strong> 5 </strong>
+          <strong> {this.state.total} </strong>
           atıştan
-          <strong> 3 </strong>ü tura
-          <strong> 2 </strong>
-          si yazı geldi.
+          <strong> {this.state.turaSum} </strong> tura
+          <strong> {this.state.yaziSum} </strong>
+           yazı geldi.
         </p>
       </div>
     );

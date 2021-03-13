@@ -4,7 +4,7 @@
   margin-top: 20px;
   color: white;
   padding: 0.6em;
-  font-size: 1em;
+  font-size: 1.3em;
   background: slateblue;
   border-radius: 5px;
   cursor: pointer;
@@ -16,11 +16,15 @@
 
 .CoinFlipper button:disabled {
   cursor: not-allowed;
-  background: #D9D7DE;
+  background: #d9d7de;
 }
 
 .CoinFlipper-number {
   font-weight: bold;
+}
+
+.CoinFlipper p {
+  font-size: 1.3rem;
 }
 
 .lds-ellipsis {

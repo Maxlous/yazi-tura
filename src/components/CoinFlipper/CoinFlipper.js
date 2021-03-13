@@ -19,19 +19,18 @@ class CoinFlipper extends Component {
   handleClick = () => {
     // "At!" butonuna tıkladığımızda paranın dönmesini istiyoruz, bu yüzden "flipping" durumunu "true" yapıyoruz.    
     this.setState({flipping:true})
-    //random sayı alıp ona göre state'leri güncelledik.
+    //random sayı alıp ona göre state'leri güncelleyeceğiz.
     const random = () => Math.floor(Math.random() *2);
-    if(random() === 0){
-      this.setState((state) => {
-        return {total: state.total + 1, side: "tura", turaSum: state.turaSum + 1};
-    });
-    } else{
-      this.setState((state) => {
-        return {total: state.total + 1,side: "yazi", yaziSum: state.yaziSum + 1};
-      });
-    }
+    const randomNum = random();
     // 1 saniye kadar dönmesi yeterli, bu yüzden 1 saniye sonra "flipping" durmunu tekrar "false" yapıyoruz.
-    setTimeout(() => this.setState({ flipping: false }), 1000)
+    if(randomNum === 0){
+      setTimeout(() => this.setState((state) => {
+        return {total: state.total + 1, side: "tura", turaSum: state.turaSum + 1, flipping: false,}
+    }),1000)} else{
+      setTimeout(() => this.setState((state) => {
+        return {total: state.total + 1,side: "yazi", yaziSum: state.yaziSum + 1, flipping: false, }
+      }),1000)}
+    
   };
 
   render() {
